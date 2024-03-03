@@ -1,0 +1,74 @@
+
+$mediaQuery1: 1350px;
+$mediaQuery2: 800px;
+
+
+:root{
+    --mainColor: #038B00;
+    --hoverBlue: #0009FF;
+    --lightBlue: #F2F5F7;
+    --accentBlue: #DBDDFF;
+    --lightGray: #F2F5F7;
+    --darkGray: #8E9199;
+    --deepGray: #8A8B8E;
+    --gold: #FFD86E;
+
+    --goldGradient: linear-gradient(93.19deg, #FFD86E 10.84%, #F0B357 27.5%, #F2CB6C 51.07%, #E6A94D 71.4%, #FFD86E 88.87%);
+
+    --mainFont: 'ArialNova';
+    --mediaQuery1: 1351px;
+    --heightImageWrap: 440px;
+    
+    --heightBetweenWraps: 30px;
+    --marginBottomTitle: 15px;
+    
+    --width: 1150px;
+
+    --little: 16px;
+    --middle: 20px;
+    --big: 24px;
+}
+
+@media screen and (max-width: $mediaQuery1) {
+    *{
+        --maxW: 90vw;
+        --heightImageWrap: 45vw;
+    } 
+}
+@media screen and (max-width: $mediaQuery2) {
+    *{
+        --width: 90vw;
+        --maxW: 95vw;
+        --heightImageWrap: 45vw;
+
+        --little: 2vw;
+        --middle: 3.2vw;
+        --big: 5.2vw;
+    }
+}
+// body{
+//     background: var(--background);
+// }
+
+@mixin baseText($size: 20px){
+    font-family: "Montserrat";
+    font-size: $size;
+    color: #2c3e50;
+}
+@mixin grayText($size: 16px){
+    font-family: "Montserrat";
+    font-size: $size;
+    color: #838B97;
+}
+@mixin blueButton{
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 52px;
+    background: var(--mainColor);
+    @include baseText(var(--little));
+    color: white;
+}
+
