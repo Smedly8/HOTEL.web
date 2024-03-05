@@ -84,6 +84,9 @@ export default{
     created(){
         this.currentRoom = this.rooms.find(el => this.$route.params.id == el.idx)
         postAction(`просмотр номера: "${this.currentRoom.name}"`)
+        .catch(() => {
+            console.warn('postAction Error');
+        })
     },
 }
 </script>

@@ -11,12 +11,14 @@ import HeaderApp from '@/components/HeaderApp.vue'
 import HomeView from '@/views/HomeView.vue'
 import FooterApp from '@/components/FooterApp.vue'
 import {getPrices, postInfo, postScrollStats} from '@/api/useApi.js'
+
 export default {
   components: {
     HeaderApp,
     HomeView,
     FooterApp,
   },
+
   data(){
     return{
       complexes: null,
@@ -237,30 +239,38 @@ export default {
       console.log('document loaded');
       this.isLoaded = true
     }) 
-    getPrices()
-    .then(response => {
-      
-      const rawPrices = response.data
-      console.log('rawPrices', rawPrices);
-      const prices = []
-      prices[0] = rawPrices[3] 
-      prices[1] = rawPrices[2] 
-      prices[2] = rawPrices[1] 
-      prices[3] = rawPrices[4] 
-      prices[4] = rawPrices[5] 
-      prices[5] = rawPrices[0] 
-      console.log('prices', prices);
-      this.rooms.map((room, idx) => {
-        let roomPrice = []
-        prices[idx].forEach((price, index) => {
-          roomPrice.push([price.time, price.price])
+    
+    try{    
+      getPrices()
+      .then(response => {
+        
+        const rawPrices = response.data
+        console.log('rawPrices', rawPrices);
+        const prices = []
+        prices[0] = rawPrices[3] 
+        prices[1] = rawPrices[2] 
+        prices[2] = rawPrices[1] 
+        prices[3] = rawPrices[4] 
+        prices[4] = rawPrices[5] 
+        prices[5] = rawPrices[0] 
+        console.log('prices', prices);
+        this.rooms.map((room, idx) => {
+          let roomPrice = []
+          prices[idx].forEach((price, index) => {
+            roomPrice.push([price.time, price.price])
+          })
+          room.prices = roomPrice
+          return room
         })
-        room.prices = roomPrice
-        return room
+        this.rooms.sort((a, b) => a.price_from > b.price_from)
+        console.log('aaa',this.rooms);
       })
-      this.rooms.sort((a, b) => a.price_from > b.price_from)
-      console.log('aaa',this.rooms);
-    })
+      .catch(() => {
+        console.warn('getPrices Error');
+      })
+    } catch {
+      console.warn('Ошибка запроса');
+    }
   },
   mounted(){
     const payload = {
@@ -268,16 +278,21 @@ export default {
       height: window.innerHeight,
     }
     postInfo(payload)
-    setInterval(() => {
-      this.scrollStats.push(window.scrollY)
-      console.log(this.scrollStats)
-    }, 500)
-    setInterval(() => {
-      postScrollStats({stats: this.scrollStats,})
-    }, 3000)
+    .catch(() => {
+      console.warn('postInfo Error');
+    })
+    // setInterval(() => {
+    //   this.scrollStats.push(window.scrollY)
+    //   console.log(this.scrollStats)
+    // }, 500)
+    // setInterval(() => {
+    //   postScrollStats({stats: this.scrollStats,})
+    // }, 3000)
   },
+
    methods:{
    },
+
    watch:{
     '$route.path'(){
         window.scroll({top: 0})

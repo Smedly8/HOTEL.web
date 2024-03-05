@@ -2,7 +2,7 @@
     <div class="rooms" id="apartments">
         <div class="rooms__wrap">
             <h2 class="rooms__wrap_title">
-                {{ title }}
+                {{ isRoomPage ? 'Другие номера' : 'Номера' }}
             </h2>
             <ul class="rooms__wrap_rooms">
                 <li v-for="(room, idx) in roomsToView" :key="idx" @click="$router.push({ name: 'apartments', params: { id: room.idx } })" class="rooms__wrap_rooms-room">
@@ -30,22 +30,25 @@
 export default {
     data(){
         return{
-            roomsToView: [],
-            title: 'Номера',
         }
     },
     props:{
         rooms: Array,
     },
-    created(){
-        if(this.$route.params.id != null){
-            this.roomsToView = this.rooms.filter((el, idx) => idx != this.$route.params.id) 
-            this.title = 'Другие номера'
+
+    computed: {
+        isRoomPage(){
+            return this.$route.params.id != null
+        },
+
+        roomsToView(){
+            if(this.isRoomPage){
+                return this.rooms.filter((el, idx) => el.idx != this.$route.params.id)
+            }
+            return this.rooms
         }
-        else{
-            this.roomsToView = this.rooms
-        }
-    }
+    },
+    
 }
 </script>
 <style lang="scss">

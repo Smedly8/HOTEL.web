@@ -44,6 +44,10 @@ export default {
             console.log(this.isOpenMobileMenu)
             this.isOpenMobileMenu = true
             postAction('Переход в мобильное меню')
+            .catch(() => {
+                console.warn('postAction Error');
+            })
+            
         }
     }
 }
