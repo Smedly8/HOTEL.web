@@ -54,10 +54,10 @@ export default {
                       require('@/assets/aparts/les/8.webp'),
                     ],
                     prices: [
-                        ['1 - 31 мая', 0],
+                        ['1 - 31 мая', 1000],
                         ['1 - 20 июня', 1800],
                         ['21 - 30 июня', 2200],
-                        ['1 - 31 июля', 2600],
+                        ['1 - 31 июля', 2800],
                         ['1 - 31 августа', 2800],
                         ['1 - 30 сентября', 1800],
                     ],
@@ -87,7 +87,7 @@ export default {
                         ['1 - 31 мая', 1000],
                         ['1 - 20 июня', 1800],
                         ['21 - 30 июня', 2400],
-                        ['1 - 31 июля', 2600],
+                        ['1 - 31 июля', 2800],
                         ['1 - 31 августа', 2800],
                         ['1 - 30 сентября', 1800],
                     ],
@@ -128,31 +128,31 @@ export default {
 
                 {
                     idx: 3,
-                    img: require('@/assets/aparts/4.png'),
+                    img: require('@/assets/aparts/mac/1.jpg'),
                     name:`Двухкомнатный семейный номер "Маки"`,
                     places: `6 мест`,
                     price_from: 1500,
                     comforts: [1, 2, 3, 4, 5],
                     description: "",
                     images: [
-                      require('@/assets/aparts/mac/2.webp'),
-                      require('@/assets/aparts/mac/1.webp'),
-                      require('@/assets/aparts/mac/3.webp'),
-                      require('@/assets/aparts/mac/4.webp'),
-                      require('@/assets/aparts/mac/5.webp'),
-                      require('@/assets/aparts/mac/6.webp'),
-                      require('@/assets/aparts/mac/7.webp'),
-                      require('@/assets/aparts/mac/8.webp'),
-                      require('@/assets/aparts/mac/9.webp'),
-                      require('@/assets/aparts/mac/10.webp'),
-                      require('@/assets/aparts/mac/11.webp'),
+                      require('@/assets/aparts/mac/1.jpg'),
+                      require('@/assets/aparts/mac/2.jpg'),
+                      require('@/assets/aparts/mac/3.jpg'),
+                      require('@/assets/aparts/mac/4.jpg'),
+                      require('@/assets/aparts/mac/5.jpg'),
+                      require('@/assets/aparts/mac/6.jpg'),
+                      require('@/assets/aparts/mac/7.jpg'),
+                      require('@/assets/aparts/mac/8.jpg'),
+                      require('@/assets/aparts/mac/9.jpg'),
+                      require('@/assets/aparts/mac/10.jpg'),
+                      require('@/assets/aparts/mac/11.jpg'),
                     ],
                     prices: [
                         ['1 - 31 мая', 1500],
                         ['1 - 20 июня', 2400],
                         ['21 - 30 июня', 2800],
-                        ['1 - 31 июля', 3500],
-                        ['1 - 31 августа', 3800],
+                        ['1 - 31 июля', 3900],
+                        ['1 - 31 августа', 4100],
                         ['1 - 30 сентября', 2400],
                     ],
                     adds: [
@@ -184,9 +184,10 @@ export default {
                     ],
                     prices: [
                         ['1 - 31 мая', 2500],
-                        ['1 - 30 июня', 3000],
-                        ['1 - 31 июля', 3700],
-                        ['1 - 31 августа', 4200],
+                        ['1 - 20 июня', 2700],
+                        ['21 - 30 июня', 3000],
+                        ['1 - 31 июля', 4000],
+                        ['1 - 31 августа', 4300],
                         ['1 - 30 сентября', 3000],
                     ],
                     adds: [
@@ -196,26 +197,58 @@ export default {
                 },
                 {
                     idx: 5,
-                    img: require('@/assets/aparts/6.png'),
-                    name:`Двухместный номер "Эконом"`,
-                    places: `2 места`,
-                    price_from: 600,
-                    comforts: [],
+                    img: require('@/assets/aparts/terrace1/1.jpg'),
+                    name:`Трёхместный номер с террасой"`,
+                    places: `2-3 места`,
+                    price_from: 1200,
+                    comforts: [3, 4],
                     description: "",
                     images: [
-                      require('@/assets/aparts/econom/1.webp'),
-                      require('@/assets/aparts/econom/2.webp'),
+                      require('@/assets/aparts/terrace1/1.jpg'),
+                      require('@/assets/aparts/terrace1/2.jpg'),
+                      require('@/assets/aparts/terrace1/3.jpg'),
+                      require('@/assets/aparts/terrace1/4.jpg'),
+                      require('@/assets/aparts/terrace1/5.jpg'),
+                      require('@/assets/aparts/terrace1/6.jpg'),
+                      require('@/assets/aparts/terrace1/7.jpg'),
                     ],
                     prices: [
-                        ['1 - 31 мая', 600],
-                        ['1 - 30 июня', 800],
-                        ['1 - 31 июля', 1000],
-                        ['1 - 31 августа', 1000],
-                        ['1 - 30 сентября', 800],
+                        ['1 - 31 мая', 1200],
+                        ['1 - 30 июня', 1800],
+                        ['1 - 31 июля', 2200],
+                        ['1 - 31 августа', 2200],
+                        ['1 - 30 сентября', 1800],
                     ],
                     adds: [
                       'Кухня: общая',
-                      'Санузел: на территории',
+                      'Санузел: рядом с номером',
+                    ],
+                },
+                {
+                    idx: 6,
+                    img: require('@/assets/aparts/terrace1/1.jpg'),
+                    name:`Двухместный номер с террасой"`,
+                    places: `2-3 места`,
+                    price_from: 1200,
+                    comforts: [3, 4],
+                    description: "",
+                    images: [
+                      require('@/assets/aparts/terrace2/1.jpg'),
+                      require('@/assets/aparts/terrace2/2.jpg'),
+                      require('@/assets/aparts/terrace2/3.jpg'),
+                      require('@/assets/aparts/terrace2/4.jpg'),
+                      require('@/assets/aparts/terrace2/5.jpg'),
+                    ],
+                    prices: [
+                        ['1 - 31 мая', 1200],
+                        ['1 - 30 июня', 1800],
+                        ['1 - 31 июля', 2200],
+                        ['1 - 31 августа', 2200],
+                        ['1 - 30 сентября', 1800],
+                    ],
+                    adds: [
+                      'Кухня: общая',
+                      'Санузел: рядом с номером',
                     ],
                 },
       ],
@@ -313,10 +346,10 @@ body{
 /* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    // animation-duration: 0.01ms !important;
+    // animation-iteration-count: 1 !important;
+    // transition-duration: 0.01ms !important;
+    // scroll-behavior: auto !important;
   }
 }
 // @font-face {

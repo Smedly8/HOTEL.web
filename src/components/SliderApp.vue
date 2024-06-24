@@ -2,10 +2,10 @@
     <div class="homeSlider">
 
         <div @click="prevSlide" class="homeSlider__wrap_navigWrap-button">
-            <img class="homeSlider__wrap_navigWrap-button-img" src="@/assets/arrow.svg" alt="">
+            <img class="homeSlider__wrap_navigWrap-button-img" style="transform: rotate(180deg);" src="@/assets/arrow-g.svg" alt="">
         </div>
         <div @click="nextSlide" class="homeSlider__wrap_navigWrap-button">
-            <img class="homeSlider__wrap_navigWrap-button-img" style="transform: rotate(180deg);" src="@/assets/arrow.svg" alt="">
+            <img class="homeSlider__wrap_navigWrap-button-img" src="@/assets/arrow-g.svg" alt="">
         </div>
 
         <swiper
@@ -159,11 +159,13 @@ export default {
                 width: 60px;
                 height: 60px;
                 background: #ffffff3a;
+                background: var(--mainColor);
+                background: rgb(252, 252, 252);
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 margin-right: 10px;
-                // border-radius: 4px;
+                border-radius: 40px;
                 backdrop-filter: blur(0.4px);
                 cursor: pointer;
                 transition: 0.2s;
@@ -177,7 +179,8 @@ export default {
                     background: #ffffff50;
                 }
                 &-img{
-                    width:  13px;
+                    width:  40px;
+                    color: green;
                 }
             }
         }
@@ -185,7 +188,7 @@ export default {
 }
 @media screen and (max-width: $mediaQuery2) {
     .homeSlider{
-        width: 100vw;
+        width: 100%;
         position: relative;
         &__wrap{
             height: 100%;
@@ -204,14 +207,15 @@ export default {
                     width: 10vw;
                     height: 10vw;
                     z-index: 10;
-                    left: 7vw;
+                    left: 4vw;
                     top: 46%;
                     &:nth-child(2){
                         left: auto;
-                        right: 7vw;
+                        right: 4vw;
                     }
                     &-img{
-                        width: 3vw;
+                        width: 7vw;
+                        
                     }
                 }
             }

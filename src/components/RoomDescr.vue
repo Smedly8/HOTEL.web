@@ -1,5 +1,5 @@
 <template>
-    <div class="descr">
+    <div class="descr" :class="{'descr--hide': hideContent}">
         <div class="descr__wrap">
             <h2>{{currentRoom.name}}</h2>
             <div class="descr__wrap_places">
@@ -79,6 +79,7 @@ export default{
     data(){
         return{
             currentRoom: null,
+            hideContent: true,
         }
     },
     created(){
@@ -88,6 +89,11 @@ export default{
             console.warn('postAction Error');
         })
     },
+    mounted(){
+        setTimeout(() => {
+            this.hideContent = false
+        }, 100)
+    }
 }
 </script>
 <style lang="scss">
@@ -96,6 +102,11 @@ export default{
     justify-content: center;
     margin-top: 100px;
     padding-bottom: 20px;
+    transition: .3s !important;
+    &--hide{
+        opacity: 0;
+        transform: translateY(20px);
+    }
     &__wrap{
         padding-top: 10px;
         width: var(--width);
