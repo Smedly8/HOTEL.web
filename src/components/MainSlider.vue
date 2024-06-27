@@ -2,7 +2,7 @@
     <div class="slider" id="slider">
         <picture>
             <source media="(max-width: 800px)" srcset="@/assets/main-small.webp">
-            <img src="@/assets/main.webp" alt="">
+            <img id="image" loading="eager" src="@/assets/main.webp" alt="">
         </picture>
         <div class="slider__textWrap">
             <h1>Заречье</h1>
@@ -10,6 +10,23 @@
         </div>
     </div>
 </template>
+<script>
+export default {
+    methods: {
+        test(){
+            console.log('!!!!!');
+            this.$emit('loadMainImage')
+        },
+    },
+        mounted(){
+            console.log(document.getElementById('image'), '@');
+            document.getElementById('image').addEventListener('load', () => {
+                console.log('!!!!!');
+                this.$emit('loadMainImage') 
+            })
+        }
+}
+</script>
 <style lang="scss">
     .slider{
         width: 100vw;
@@ -39,7 +56,7 @@
             & > p{
                 font-size: 55px;
                 color: white;
-                font-family: 'Neucha',
+                font-family: 'Neucha';
             }
             & > h1{
                 font-size: 120px;

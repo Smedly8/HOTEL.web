@@ -1,5 +1,5 @@
 <template>
-    <MainSlider/>
+    <MainSlider @loadMainImage="$emit('loadMainImage')"/>
     <AboutApp/>
     <RoomsApp :rooms="rooms"/>
 </template>
@@ -41,6 +41,7 @@ export default {
         },
     },
     created(){
+        console.log('@@@');
     },
     mounted(){
         window.addEventListener('scroll', () => {

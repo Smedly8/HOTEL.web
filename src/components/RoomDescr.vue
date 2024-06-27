@@ -19,7 +19,7 @@
             <div class="descr__wrap_descrWrap">
                 <!-- <h2>Описание</h2>
                 <p>У коттеджей "Фламинго" и "Лесик" имеются отдельная зона с мангалом, садовая качель. У коттеджей "Фламинго" и "Лесик" имеются отдельная зона с мангалом, садовая качель</p> -->
-                <ul class="descr__wrap_descrWrap-comforts">
+                <ul class="descr__wrap_descrWrap-comforts" :class="{'hide': hideComforts}">
 
                     <li v-for="add in currentRoom.adds" :key="add" class="descr__wrap_descrWrap-comforts-comfort">
                         <img src="@/assets/check.svg" alt="">
@@ -28,7 +28,7 @@
 
                 </ul>
             </div>
-            <div class="descr__wrap_bottomDescr">
+            <div class="descr__wrap_bottomDescr" :class="{'hide': hideBottom}">
                 <div class="descr__wrap_bottomDescr-comforts" v-if="currentRoom.comforts.length > 0">
                     <h2>Удобства</h2>
                     <div v-if="currentRoom.comforts.includes(1)" class="descr__wrap_bottomDescr-comforts-row">
@@ -80,6 +80,9 @@ export default{
         return{
             currentRoom: null,
             hideContent: true,
+            hideComforts: true,
+            hideBottom: true,
+            // hide
         }
     },
     created(){
@@ -92,17 +95,29 @@ export default{
     mounted(){
         setTimeout(() => {
             this.hideContent = false
-        }, 100)
+            setTimeout(() => {
+                this.hideComforts = false
+                setTimeout(() => {
+                    this.hideBottom = false
+                }, 100)
+            }, 100)
+        }, 50)
     }
 }
 </script>
 <style lang="scss">
+$transition: .3s;
+.hide{
+    opacity: 0;
+    transform: translateY(20px);
+}
+
 .descr{
     display: flex;
     justify-content: center;
     margin-top: 100px;
     padding-bottom: 20px;
-    transition: .3s !important;
+    transition: $transition;
     &--hide{
         opacity: 0;
         transform: translateY(20px);
@@ -167,6 +182,7 @@ export default{
                 flex-direction: column;
                 gap: 14px;
                 margin-top: 30px;
+                transition: $transition;
                 &-comfort{
                     display: flex;
                     & > img{
@@ -185,6 +201,7 @@ export default{
             margin-top: 45px;
             margin-bottom: 50px;
             gap: 300px;
+            transition: $transition;
             &-comforts{
                 display: flex;
                 flex-direction: column;

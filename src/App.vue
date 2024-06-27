@@ -1,15 +1,20 @@
 <template>
   <HeaderApp :links="links"/>
   <!-- <HomeView/> -->
-  <router-view :rooms="rooms"></router-view>
+  <router-view 
+    :rooms="rooms"
+    @loadMainImage="showPage"
+  ></router-view>
   <FooterApp :links="links"/>
   <!-- <router-view>
   </router-view> -->
+  <LoadingApp v-if="!isLoaded"/>
 </template>
 <script>
 import HeaderApp from '@/components/HeaderApp.vue'
 import HomeView from '@/views/HomeView.vue'
 import FooterApp from '@/components/FooterApp.vue'
+import LoadingApp from '@/components/LoadingApp.vue'
 import {getPrices, postInfo, postScrollStats} from '@/api/useApi.js'
 
 export default {
@@ -17,6 +22,7 @@ export default {
     HeaderApp,
     HomeView,
     FooterApp,
+    LoadingApp,
   },
 
   data(){
@@ -267,12 +273,10 @@ export default {
     }
   },
   created(){
-    console.log('aaa',this.rooms);
     window.addEventListener('load', ()=>{
       console.log('document loaded');
-      this.isLoaded = true
+      this.showPage()
     }) 
-    
     try{    
       getPrices()
       .then(response => {
@@ -323,7 +327,11 @@ export default {
     // }, 3000)
   },
 
-   methods:{
+   methods: {
+    showPage(){
+      console.log('showPage');
+      this.isLoaded = true
+    },
    },
 
    watch:{
